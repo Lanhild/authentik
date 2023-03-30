@@ -50,9 +50,6 @@ lint:
 migrate:
 	python -m lifecycle.migrate
 
-run:
-	go run -v ./cmd/server/
-
 i18n-extract: i18n-extract-core web-extract
 
 i18n-extract-core:
@@ -66,8 +63,11 @@ gen-build:
 	AUTHENTIK_DEBUG=true ak make_blueprint_schema > blueprints/schema.json
 	AUTHENTIK_DEBUG=true ak spectacular --file schema.yml
 
+gen-changelog:
+	git log --pretty=format:" - %s" $(shell git describe --tags $(shell git rev-list --tags --max-count=1))...$(shell git branch --show-current) | sort > changelog.md
+
 gen-diff:
-	git show $(shell git describe --abbrev=0):schema.yml > old_schema.yml
+	git show $(shell git describe --tags $(shell git rev-list --tags --max-count=1)):schema.yml > old_schema.yml
 	docker run \
 		--rm -v ${PWD}:/local \
 		--user ${UID}:${GID} \

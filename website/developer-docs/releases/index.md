@@ -9,6 +9,7 @@
 
 -   Check if any of the changes merged to the branch make changes to the API schema, and if so update the package `@goauthentik/api` in `/web`
 -   Push the branch, which will run the CI pipeline to make sure all tests pass
+-   Create the version subdomain for the version branch ([see](https://github.com/goauthentik/terraform/commit/87792678ed525711be9c8c15dd4b931077dbaac2)) and add the subdomain in Netlify ([here](https://app.netlify.com/sites/authentik/settings/domain))
 -   Create/update the release notes
 
     #### For initial releases:
@@ -20,6 +21,8 @@
     -   Run `git log --pretty=format:'- %s' version/2022.11.3...version-2022.12`, where `version/2022.11.3` is the tag of the previous stable release. This will output a list of all commits since the previous release.
 
     -   Paste the list of commits since the previous release under the `Minor changes/fixes` section.
+
+        Run `make gen-changelog` and use the contents of `changelog.md`. Remove merged PRs from bumped dependencies unless they fix security issues or are otherwise notable. Remove merged PRs with the `website/` prefix.
 
     -   Sort the list of commits alphabetically and remove all commits that have little importance, like dependency updates and linting fixes
 
@@ -35,7 +38,7 @@
 
     -   Paste the list of commits since the previous release into `website/docs/releases/v2022.12.md`, creating a new section called `## Fixed in 2022.12.2` underneath the `Minor changes/fixes` section
 
-    -   Sort the list of commits alphabetically and remove all commits that have little importance, like dependency updates and linting fixes
+    -   Run `make gen-changelog` and use the contents of `changelog.md`. Remove merged PRs from bumped dependencies unless they fix security issues or are otherwise notable. Remove merged PRs with the `website/` prefix.
 
     -   Run `make gen-diff` and copy the contents of `diff.md` under `API Changes`, replacing the previous changes
 

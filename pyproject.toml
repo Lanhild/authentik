@@ -105,7 +105,7 @@ filterwarnings = [
 
 [tool.poetry]
 name = "authentik"
-version = "2023.3.1"
+version = "2023.4.0"
 description = ""
 authors = ["authentik Team <hello@goauthentik.io>"]
 
@@ -141,7 +141,7 @@ lxml = "*"
 opencontainers = { extras = ["reggie"], version = "*" }
 packaging = "*"
 paramiko = "*"
-psycopg = { extras = ["binary"], version = "*" }
+psycopg2-binary = "*"
 pycryptodome = "*"
 pyjwt = "*"
 python = "^3.11"

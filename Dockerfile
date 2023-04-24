@@ -1,5 +1,5 @@
 # Stage 1: Build website
-FROM --platform=${BUILDPLATFORM} docker.io/node:18 as website-builder
+FROM --platform=${BUILDPLATFORM} docker.io/node:20 as website-builder
 
 COPY ./website /work/website/
 COPY ./blueprints /work/blueprints/
@@ -10,7 +10,7 @@ WORKDIR /work/website
 RUN npm ci && npm run build-docs-only
 
 # Stage 2: Build webui
-FROM --platform=${BUILDPLATFORM} docker.io/node:18 as web-builder
+FROM --platform=${BUILDPLATFORM} docker.io/node:20 as web-builder
 
 COPY ./web /work/web/
 COPY ./website /work/website/
@@ -83,7 +83,7 @@ RUN apt-get update && \
     # Required for runtime
     apt-get install -y --no-install-recommends libxmlsec1-openssl libmaxminddb0 && \
     # Required for bootstrap & healtcheck
-    apt-get install -y --no-install-recommends curl runit && \
+    apt-get install -y --no-install-recommends runit && \
     pip install --no-cache-dir -r /requirements.txt && \
     apt-get remove --purge -y build-essential pkg-config libxmlsec1-dev && \
     apt-get autoremove --purge -y && \

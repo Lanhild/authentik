@@ -2,7 +2,7 @@
 from deepmerge import always_merger
 from pydantic import ValidationError
 from pydanticscim.group import GroupMember
-from pydanticscim.responses import PatchOp, PatchOperation, PatchRequest
+from pydanticscim.responses import PatchOp, PatchOperation
 
 from authentik.core.exceptions import PropertyMappingExpressionException
 from authentik.core.models import Group
@@ -10,8 +10,13 @@ from authentik.events.models import Event, EventAction
 from authentik.lib.utils.errors import exception_to_string
 from authentik.policies.utils import delete_none_keys
 from authentik.providers.scim.clients.base import SCIMClient
-from authentik.providers.scim.clients.exceptions import StopSync
+from authentik.providers.scim.clients.exceptions import (
+    ResourceMissing,
+    SCIMRequestException,
+    StopSync,
+)
 from authentik.providers.scim.clients.schema import Group as SCIMGroupSchema
+from authentik.providers.scim.clients.schema import PatchRequest
 from authentik.providers.scim.models import SCIMGroup, SCIMMapping, SCIMUser
 
 
@@ -23,15 +28,11 @@ class SCIMGroupClient(SCIMClient[Group, SCIMGroupSchema]):
         scim_group = SCIMGroup.objects.filter(provider=self.provider, group=obj).first()
         if not scim_group:
             return self._create(obj)
-        scim_group = self.to_scim(obj)
-        scim_group.id = scim_group.id
-        return self._request(
-            "PUT",
-            f"/Groups/{scim_group.id}",
-            data=scim_group.json(
-                exclude_unset=True,
-            ),
-        )
+        try:
+            return self._update(obj, scim_group)
+        except ResourceMissing:
+            scim_group.delete()
+            return self._create(obj)
 
     def delete(self, obj: Group):
         """Delete group"""
@@ -81,12 +82,15 @@ class SCIMGroupClient(SCIMClient[Group, SCIMGroupSchema]):
 
         users = list(obj.users.order_by("id").values_list("id", flat=True))
         connections = SCIMUser.objects.filter(provider=self.provider, user__pk__in=users)
+        members = []
         for user in connections:
-            scim_group.members.append(
+            members.append(
                 GroupMember(
                     value=user.id,
                 )
             )
+        if members:
+            scim_group.members = members
         return scim_group
 
     def _create(self, group: Group):
@@ -101,13 +105,32 @@ class SCIMGroupClient(SCIMClient[Group, SCIMGroupSchema]):
         )
         SCIMGroup.objects.create(provider=self.provider, group=group, id=response["id"])
 
+    def _update(self, group: Group, connection: SCIMGroup):
+        """Update existing group"""
+        scim_group = self.to_scim(group)
+        scim_group.id = connection.id
+        try:
+            return self._request(
+                "PUT",
+                f"/Groups/{scim_group.id}",
+                data=scim_group.json(
+                    exclude_unset=True,
+                ),
+            )
+        except SCIMRequestException:
+            # Some providers don't support PUT on groups, so this is mainly a fix for the initial
+            # sync, send patch add requests for all the users the group currently has
+            # TODO: send patch request for group name
+            users = list(group.users.order_by("id").values_list("id", flat=True))
+            return self._patch_add_users(group, users)
+
     def _patch(
         self,
         group_id: str,
         *ops: PatchOperation,
     ):
         req = PatchRequest(Operations=ops)
-        self._request("PATCH", f"/Groups/{group_id}", data=req.json(exclude_unset=True))
+        self._request("PATCH", f"/Groups/{group_id}", data=req.json())
 
     def update_group(self, group: Group, action: PatchOp, users_set: set[int]):
         """Update a group, either using PUT to replace it or PATCH if supported"""
@@ -116,7 +139,17 @@ class SCIMGroupClient(SCIMClient[Group, SCIMGroupSchema]):
                 return self._patch_add_users(group, users_set)
             if action == PatchOp.remove:
                 return self._patch_remove_users(group, users_set)
-        return self.write(group)
+        try:
+            return self.write(group)
+        except SCIMRequestException as exc:
+            if self._config.is_fallback:
+                # Assume that provider does not support PUT and also doesn't support
+                # ServiceProviderConfig, so try PATCH as a fallback
+                if action == PatchOp.add:
+                    return self._patch_add_users(group, users_set)
+                if action == PatchOp.remove:
+                    return self._patch_remove_users(group, users_set)
+            raise exc
 
     def _patch_add_users(self, group: Group, users_set: set[int]):
         """Add users in users_set to group"""
@@ -133,6 +166,8 @@ class SCIMGroupClient(SCIMClient[Group, SCIMGroupSchema]):
                 "id", flat=True
             )
         )
+        if len(user_ids) < 1:
+            return
         self._patch(
             scim_group.id,
             PatchOperation(
@@ -157,6 +192,8 @@ class SCIMGroupClient(SCIMClient[Group, SCIMGroupSchema]):
                 "id", flat=True
             )
         )
+        if len(user_ids) < 1:
+            return
         self._patch(
             scim_group.id,
             PatchOperation(

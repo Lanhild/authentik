@@ -37,20 +37,22 @@ class TestCrypto(APITestCase):
         keypair = create_test_cert()
         self.assertTrue(
             CertificateKeyPairSerializer(
+                instance=keypair,
                 data={
                     "name": keypair.name,
                     "certificate_data": keypair.certificate_data,
                     "key_data": keypair.key_data,
-                }
+                },
             ).is_valid()
         )
         self.assertFalse(
             CertificateKeyPairSerializer(
+                instance=keypair,
                 data={
                     "name": keypair.name,
                     "certificate_data": "test",
                     "key_data": "test",
-                }
+                },
             ).is_valid()
         )
 
@@ -246,7 +248,6 @@ class TestCrypto(APITestCase):
             with open(f"{temp_dir}/foo.bar/privkey.pem", "w+", encoding="utf-8") as _key:
                 _key.write(builder.private_key)
             with CONFIG.patch("cert_discovery_dir", temp_dir):
-                # pyright: reportGeneralTypeIssues=false
                 certificate_discovery()  # pylint: disable=no-value-for-parameter
         keypair: CertificateKeyPair = CertificateKeyPair.objects.filter(
             managed=MANAGED_DISCOVERED % "foo"

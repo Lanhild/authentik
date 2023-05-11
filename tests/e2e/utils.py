@@ -54,8 +54,6 @@ class SeleniumTestCase(StaticLiveServerTestCase):
         if IS_CI:
             print("::group::authentik Logs", file=stderr)
         super().setUp()
-        # pylint: disable=invalid-name
-        self.maxDiff = None
         self.wait_timeout = 60
         self.driver = self._get_driver()
         self.driver.implicitly_wait(30)
@@ -232,7 +230,8 @@ def retry(max_retires=RETRIES, exceptions=None):
                     raise exc
                 logger.debug("Retrying on error", exc=exc, test=self)
                 self.tearDown()
-                self._post_teardown()  # noqa
+                self._post_teardown()
+                self._pre_setup()
                 self.setUp()
                 return wrapper(self, *args, **kwargs)
 

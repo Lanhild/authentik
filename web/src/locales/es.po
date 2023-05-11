@@ -275,6 +275,15 @@ msgstr "Activar usuario pendiente en caso de éxito"
 msgid "Active"
 msgstr "Activo"
 
+#: src/admin/property-mappings/PropertyMappingTestForm.ts
+msgid "Active Directory Group"
+msgstr ""
+
+#: src/admin/property-mappings/PropertyMappingTestForm.ts
+msgid "Active Directory User"
+msgstr ""
+
+#: src/admin/applications/ProviderSelectModal.ts
 #: src/admin/groups/MemberSelectModal.ts
 #: src/admin/groups/RelatedGroupList.ts
 #: src/admin/users/GroupSelectModal.ts
@@ -389,7 +398,6 @@ msgstr "Configuraciones avanzadas"
 msgid "Affected model:"
 msgstr "Modelo afectado:"
 
-#: src/admin/events/RuleForm.ts
 #: src/admin/events/RuleListPage.ts
 msgid "Alert"
 msgstr "Alerta"
@@ -716,6 +724,10 @@ msgstr "Asignado a {0} objeto(s)."
 msgid "Assigned to application"
 msgstr "Asignado a la aplicación"
 
+#: src/admin/providers/ProviderListPage.ts
+msgid "Assigned to application (backchannel)"
+msgstr ""
+
 #: src/admin/events/EventInfo.ts
 msgid "Attempted to log in as {0}"
 msgstr "Se intentó iniciar sesión como {0}"
@@ -874,6 +886,14 @@ msgstr "Imagen de avatar"
 msgid "Back"
 msgstr ""
 
+#: src/admin/applications/ApplicationForm.ts
+msgid "Backchannel providers"
+msgstr ""
+
+#: src/admin/applications/ApplicationViewPage.ts
+msgid "Backchannel Providers"
+msgstr ""
+
 #: src/admin/stages/password/PasswordStageForm.ts
 msgid "Backends"
 msgstr "Backends"
@@ -943,6 +963,10 @@ msgstr ""
 
 #: src/admin/providers/oauth2/OAuth2ProviderForm.ts
 msgid "Based on the User's username"
+msgstr ""
+
+#: src/admin/providers/oauth2/OAuth2ProviderForm.ts
+msgid "Based on the User's UUID"
 msgstr ""
 
 #: src/admin/providers/oauth2/OAuth2ProviderForm.ts
@@ -1103,6 +1127,7 @@ msgstr "Puede tener el formato 'unix: //' cuando se conecta a un servicio local 
 #~ msgid "Can create users"
 #~ msgstr ""
 
+#: src/admin/applications/ProviderSelectModal.ts
 #: src/admin/groups/MemberSelectModal.ts
 #: src/admin/users/GroupSelectModal.ts
 #: src/admin/users/UserActiveForm.ts
@@ -2329,12 +2354,20 @@ msgid "Edit Stage"
 msgstr "Editar etapa"
 
 #: src/admin/groups/GroupViewPage.ts
-msgid "Edit the notes attribute of this group to add notes here. Markdown is supported."
+msgid "Edit the notes attribute of this group to add notes here."
+msgstr ""
+
+#: src/admin/groups/GroupViewPage.ts
+#~ msgid "Edit the notes attribute of this group to add notes here. Markdown is supported."
+#~ msgstr ""
+
+#: src/admin/users/UserViewPage.ts
+msgid "Edit the notes attribute of this user to add notes here."
 msgstr ""
 
 #: src/admin/users/UserViewPage.ts
-msgid "Edit the notes attribute of this user to add notes here. Markdown is supported."
-msgstr ""
+#~ msgid "Edit the notes attribute of this user to add notes here. Markdown is supported."
+#~ msgstr ""
 
 #: src/admin/policies/BoundPoliciesList.ts
 msgid "Edit User"
@@ -2534,6 +2567,10 @@ msgstr "Eventos"
 #: src/admin/admin-overview/cards/SystemStatusCard.ts
 msgid "Everything is ok."
 msgstr "Está todo bien."
+
+#: src/admin/property-mappings/PropertyMappingTestForm.ts
+msgid "Example context data"
+msgstr ""
 
 #: src/admin/providers/oauth2/OAuth2ProviderViewPage.ts
 msgid "Example JWT payload (for currently authenticated user)"
@@ -3963,6 +4000,7 @@ msgstr "Mis aplicaciones"
 
 #: src/admin/applications/ApplicationForm.ts
 #: src/admin/applications/ApplicationListPage.ts
+#: src/admin/applications/ProviderSelectModal.ts
 #: src/admin/applications/wizard/InitialApplicationWizardPage.ts
 #: src/admin/blueprints/BlueprintForm.ts
 #: src/admin/blueprints/BlueprintListPage.ts
@@ -4184,8 +4222,8 @@ msgid "No additional setup is required."
 msgstr "No se requiere ninguna configuración adicional."
 
 #: src/admin/providers/ProviderListPage.ts
-msgid "No application required."
-msgstr ""
+#~ msgid "No application required."
+#~ msgstr ""
 
 #: src/user/LibraryPage.ts
 msgid "No Applications available."
@@ -4320,7 +4358,6 @@ msgstr "¿No eres tú?"
 msgid "Notes"
 msgstr ""
 
-#: src/admin/events/RuleForm.ts
 #: src/admin/events/RuleListPage.ts
 msgid "Notice"
 msgstr "Notificación"
@@ -5546,6 +5583,10 @@ msgstr "Seleccione un flujo de inscripción"
 msgid "Select an object."
 msgstr ""
 
+#: src/admin/applications/ApplicationForm.ts
+msgid "Select backchannel providers which augment the functionality of the main provider."
+msgstr ""
+
 #: src/admin/users/GroupSelectModal.ts
 msgid "Select groups to add user to"
 msgstr "Seleccione los grupos a los que añadir usuarios"
@@ -5554,9 +5595,17 @@ msgstr "Seleccione los grupos a los que añadir usuarios"
 msgid "Select one of the sources below to login."
 msgstr "Seleccione una de las fuentes a continuación para iniciar sesión."
 
+#: src/admin/applications/ProviderSelectModal.ts
+msgid "Select providers to add to application"
+msgstr ""
+
 #: src/admin/stages/identification/IdentificationStageForm.ts
 msgid "Select sources should be shown for users to authenticate with. This only affects web-based sources, not LDAP."
 msgstr "Se deben mostrar las fuentes seleccionadas para que los usuarios se autentiquen con ellas. Esto solo afecta a las fuentes basadas en web, no a LDAP."
+
+#: src/admin/events/RuleForm.ts
+msgid "Select the group of users which the alerts are sent to. If no group is selected the rule is disabled."
+msgstr ""
 
 #: src/admin/outposts/ServiceConnectionWizard.ts
 #: src/admin/policies/PolicyWizard.ts
@@ -6991,6 +7040,7 @@ msgstr "SID de cuenta Twilio"
 msgid "Twilio Auth Token"
 msgstr "Token de autenticación de Twilio"
 
+#: src/admin/applications/ProviderSelectModal.ts
 #: src/admin/flows/BoundStagesList.ts
 #: src/admin/outposts/OutpostForm.ts
 #: src/admin/outposts/OutpostListPage.ts
@@ -7740,7 +7790,6 @@ msgstr ""
 #: src/admin/admin-overview/cards/SystemStatusCard.ts
 #: src/admin/admin-overview/cards/SystemStatusCard.ts
 #: src/admin/blueprints/BlueprintListPage.ts
-#: src/admin/events/RuleForm.ts
 #: src/admin/events/RuleListPage.ts
 #: src/admin/system-tasks/SystemTaskListPage.ts
 msgid "Warning"
@@ -8013,13 +8062,14 @@ msgid "Yes ({0})"
 msgstr "Sí ({0})"
 
 #: src/flow/providers/oauth2/DeviceCodeFinish.ts
-msgid "You can close this tab now."
-msgstr ""
+#~ msgid "You can close this tab now."
+#~ msgstr ""
 
 #: src/admin/outposts/OutpostForm.ts
 msgid "You can only select providers that match the type of the outpost."
 msgstr "Solo puede seleccionar proveedores que coincidan con el tipo de puesto avanzado."
 
+#: src/flow/providers/oauth2/DeviceCodeFinish.ts
 #: src/flow/stages/RedirectStage.ts
 msgid "You may close this page now."
 msgstr ""

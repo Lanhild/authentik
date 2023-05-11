@@ -4,6 +4,7 @@ const releases = sidebar.docs
     .filter((doc) => doc.link?.slug === "releases")[0]
     .items.filter((release) => typeof release === "string");
 
+/** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
     title: "authentik",
     tagline: "Making authentication simple.",
@@ -117,6 +118,9 @@ module.exports = {
             ],
             copyright: `Copyright © ${new Date().getFullYear()} Authentik Security Inc. Built with Docusaurus.`,
         },
+        tableOfContents: {
+            maxHeadingLevel: 5,
+        },
         colorMode: {
             respectPrefersColorScheme: true,
         },
@@ -142,6 +146,11 @@ module.exports = {
                 gtag: {
                     trackingID: "G-9MVR9WZFZH",
                     anonymizeIP: true,
+                },
+                blog: {
+                    showReadingTime: true,
+                    blogSidebarTitle: "All our posts",
+                    blogSidebarCount: "ALL",
                 },
             },
         ],

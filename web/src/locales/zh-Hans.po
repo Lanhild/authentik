@@ -268,6 +268,15 @@ msgstr "成功时激活待处理用户"
 msgid "Active"
 msgstr "激活"
 
+#: src/admin/property-mappings/PropertyMappingTestForm.ts
+msgid "Active Directory Group"
+msgstr "Active Directory 组"
+
+#: src/admin/property-mappings/PropertyMappingTestForm.ts
+msgid "Active Directory User"
+msgstr "Active Directory 用户"
+
+#: src/admin/applications/ProviderSelectModal.ts
 #: src/admin/groups/MemberSelectModal.ts
 #: src/admin/groups/RelatedGroupList.ts
 #: src/admin/users/GroupSelectModal.ts
@@ -384,7 +393,6 @@ msgstr "高级设置"
 msgid "Affected model:"
 msgstr "受影响的模型："
 
-#: src/admin/events/RuleForm.ts
 #: src/admin/events/RuleListPage.ts
 msgid "Alert"
 msgstr "注意"
@@ -702,6 +710,10 @@ msgstr "已分配给 {0} 个对象。"
 msgid "Assigned to application"
 msgstr "分配给应用程序"
 
+#: src/admin/providers/ProviderListPage.ts
+msgid "Assigned to application (backchannel)"
+msgstr "绑定到应用（反向通道）"
+
 #: src/admin/events/EventInfo.ts
 msgid "Attempted to log in as {0}"
 msgstr "已尝试以 {0} 身份登录"
@@ -860,6 +872,14 @@ msgstr "头像图片"
 msgid "Back"
 msgstr "返回"
 
+#: src/admin/applications/ApplicationForm.ts
+msgid "Backchannel providers"
+msgstr "反向通道提供程序"
+
+#: src/admin/applications/ApplicationViewPage.ts
+msgid "Backchannel Providers"
+msgstr "反向通道提供程序"
+
 #: src/admin/stages/password/PasswordStageForm.ts
 msgid "Backends"
 msgstr "后端"
@@ -927,6 +947,10 @@ msgstr "基于用户 UPN"
 #: src/admin/providers/oauth2/OAuth2ProviderForm.ts
 msgid "Based on the User's username"
 msgstr "基于用户名"
+
+#: src/admin/providers/oauth2/OAuth2ProviderForm.ts
+msgid "Based on the User's UUID"
+msgstr ""
 
 #~ msgid "Based on the username"
 #~ msgstr "基于用户名"
@@ -1077,6 +1101,7 @@ msgstr "连接到本地 Docker 守护进程时可以采用 'unix://' 格式，�
 #~ msgid "Can create users"
 #~ msgstr "可创建用户"
 
+#: src/admin/applications/ProviderSelectModal.ts
 #: src/admin/groups/MemberSelectModal.ts
 #: src/admin/users/GroupSelectModal.ts
 #: src/admin/users/UserActiveForm.ts
@@ -1366,9 +1391,8 @@ msgstr "机密"
 
 #: src/admin/providers/oauth2/OAuth2ProviderForm.ts
 msgid "Confidential clients are capable of maintaining the confidentiality of their credentials such as client secrets"
-msgstr ""
+msgstr "机密客户端有能力维护其凭据例如客户端密钥的机密性。"
 
-#: src/admin/providers/oauth2/OAuth2ProviderForm.ts
 #~ msgid "Confidential clients are capable of maintaining the confidentiality of their credentials. Public clients are incapable."
 #~ msgstr "机密客户能够对其凭据进行保密。公共客户端无此能力。"
 
@@ -2288,12 +2312,18 @@ msgid "Edit Stage"
 msgstr "编辑阶段"
 
 #: src/admin/groups/GroupViewPage.ts
-msgid "Edit the notes attribute of this group to add notes here. Markdown is supported."
-msgstr "编辑该组的备注属性以在此处添加备注。支持 Markdown。"
+msgid "Edit the notes attribute of this group to add notes here."
+msgstr "编辑该组的备注属性以在此处添加备注。"
+
+#~ msgid "Edit the notes attribute of this group to add notes here. Markdown is supported."
+#~ msgstr "编辑该组的备注属性以在此处添加备注。支持 Markdown。"
 
 #: src/admin/users/UserViewPage.ts
-msgid "Edit the notes attribute of this user to add notes here. Markdown is supported."
-msgstr "编辑该用户的备注属性以在此处添加备注。支持 Markdown。"
+msgid "Edit the notes attribute of this user to add notes here."
+msgstr "编辑该用户的备注属性以在此处添加备注。"
+
+#~ msgid "Edit the notes attribute of this user to add notes here. Markdown is supported."
+#~ msgstr "编辑该用户的备注属性以在此处添加备注。支持 Markdown。"
 
 #: src/admin/policies/BoundPoliciesList.ts
 msgid "Edit User"
@@ -2490,6 +2520,10 @@ msgstr "事件"
 #: src/admin/admin-overview/cards/SystemStatusCard.ts
 msgid "Everything is ok."
 msgstr "一切正常。"
+
+#: src/admin/property-mappings/PropertyMappingTestForm.ts
+msgid "Example context data"
+msgstr "示例上下文数据"
 
 #: src/admin/providers/oauth2/OAuth2ProviderViewPage.ts
 msgid "Example JWT payload (for currently authenticated user)"
@@ -3907,6 +3941,7 @@ msgstr "我的应用"
 
 #: src/admin/applications/ApplicationForm.ts
 #: src/admin/applications/ApplicationListPage.ts
+#: src/admin/applications/ProviderSelectModal.ts
 #: src/admin/applications/wizard/InitialApplicationWizardPage.ts
 #: src/admin/blueprints/BlueprintForm.ts
 #: src/admin/blueprints/BlueprintListPage.ts
@@ -4127,9 +4162,8 @@ msgstr "没有可用的额外数据。"
 msgid "No additional setup is required."
 msgstr "无需进行额外设置。"
 
-#: src/admin/providers/ProviderListPage.ts
-msgid "No application required."
-msgstr "没有应用需求。"
+#~ msgid "No application required."
+#~ msgstr "没有应用需求。"
 
 #: src/user/LibraryPage.ts
 msgid "No Applications available."
@@ -4264,7 +4298,6 @@ msgstr "不是您？"
 msgid "Notes"
 msgstr "备注"
 
-#: src/admin/events/RuleForm.ts
 #: src/admin/events/RuleListPage.ts
 msgid "Notice"
 msgstr "通知"
@@ -4982,7 +5015,7 @@ msgstr "公开"
 
 #: src/admin/providers/oauth2/OAuth2ProviderForm.ts
 msgid "Public clients are incapable of maintaining the confidentiality and should use methods like PKCE."
-msgstr ""
+msgstr "公开客户端没有能力维护其凭据的机密性，应该使用 PKCE 等方法。"
 
 #: src/admin/stages/captcha/CaptchaStageForm.ts
 msgid "Public Key"
@@ -5477,6 +5510,10 @@ msgstr "选择注册流程"
 msgid "Select an object."
 msgstr "选择一个对象。"
 
+#: src/admin/applications/ApplicationForm.ts
+msgid "Select backchannel providers which augment the functionality of the main provider."
+msgstr "选择可为主要提供程序增强功能的反向通道提供程序。"
+
 #: src/admin/users/GroupSelectModal.ts
 msgid "Select groups to add user to"
 msgstr "选择要添加用户的组"
@@ -5485,9 +5522,17 @@ msgstr "选择要添加用户的组"
 msgid "Select one of the sources below to login."
 msgstr "选择以下源之一进行登录。"
 
+#: src/admin/applications/ProviderSelectModal.ts
+msgid "Select providers to add to application"
+msgstr "选择要添加到应用的提供程序"
+
 #: src/admin/stages/identification/IdentificationStageForm.ts
 msgid "Select sources should be shown for users to authenticate with. This only affects web-based sources, not LDAP."
 msgstr "选择的源应显示给用户进行身份验证。这只会影响基于 Web 的源，而不影响 LDAP。"
+
+#: src/admin/events/RuleForm.ts
+msgid "Select the group of users which the alerts are sent to. If no group is selected the rule is disabled."
+msgstr ""
 
 #: src/admin/outposts/ServiceConnectionWizard.ts
 #: src/admin/policies/PolicyWizard.ts
@@ -6901,6 +6946,7 @@ msgstr "Twilio 账户 SID"
 msgid "Twilio Auth Token"
 msgstr "Twilio 身份验证令牌"
 
+#: src/admin/applications/ProviderSelectModal.ts
 #: src/admin/flows/BoundStagesList.ts
 #: src/admin/outposts/OutpostForm.ts
 #: src/admin/outposts/OutpostListPage.ts
@@ -7641,7 +7687,6 @@ msgstr "正在等待身份验证…"
 #: src/admin/admin-overview/cards/SystemStatusCard.ts
 #: src/admin/admin-overview/cards/SystemStatusCard.ts
 #: src/admin/blueprints/BlueprintListPage.ts
-#: src/admin/events/RuleForm.ts
 #: src/admin/events/RuleListPage.ts
 #: src/admin/system-tasks/SystemTaskListPage.ts
 msgid "Warning"
@@ -7917,17 +7962,17 @@ msgstr "是"
 msgid "Yes ({0})"
 msgstr "是（{0}）"
 
-#: src/flow/providers/oauth2/DeviceCodeFinish.ts
-msgid "You can close this tab now."
-msgstr "您可以关闭此标签页了。"
+#~ msgid "You can close this tab now."
+#~ msgstr "您可以关闭此标签页了。"
 
 #: src/admin/outposts/OutpostForm.ts
 msgid "You can only select providers that match the type of the outpost."
 msgstr "您只能选择与前哨类型匹配的提供程序。"
 
+#: src/flow/providers/oauth2/DeviceCodeFinish.ts
 #: src/flow/stages/RedirectStage.ts
 msgid "You may close this page now."
-msgstr ""
+msgstr "您可以关闭此页面了。"
 
 #: src/flow/stages/RedirectStage.ts
 msgid "You're about to be redirect to the following URL."

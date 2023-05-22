@@ -398,7 +398,7 @@ msgstr "Configuraciones avanzadas"
 msgid "Affected model:"
 msgstr "Modelo afectado:"
 
-#: src/admin/events/RuleListPage.ts
+#: src/admin/events/utils.ts
 msgid "Alert"
 msgstr "Alerta"
 
@@ -768,6 +768,10 @@ msgstr "Autenticando con Plex..."
 #: src/admin/providers/proxy/ProxyProviderViewPage.ts
 msgid "Authentication"
 msgstr "Autenticación"
+
+#: src/flow/stages/authenticator_validate/AuthenticatorValidateStageCode.ts
+msgid "Authentication code"
+msgstr ""
 
 #: src/admin/providers/oauth2/OAuth2ProviderForm.ts
 #: src/admin/providers/proxy/ProxyProviderForm.ts
@@ -1399,7 +1403,6 @@ msgstr "Cerrar"
 #: src/flow/providers/oauth2/DeviceCode.ts
 #: src/flow/stages/authenticator_sms/AuthenticatorSMSStage.ts
 #: src/flow/stages/authenticator_totp/AuthenticatorTOTPStage.ts
-#: src/flow/stages/authenticator_validate/AuthenticatorValidateStageCode.ts
 msgid "Code"
 msgstr "Código"
 
@@ -4358,7 +4361,7 @@ msgstr "¿No eres tú?"
 msgid "Notes"
 msgstr ""
 
-#: src/admin/events/RuleListPage.ts
+#: src/admin/events/utils.ts
 msgid "Notice"
 msgstr "Notificación"
 
@@ -4528,6 +4531,10 @@ msgstr ""
 
 #: src/user/user-settings/details/UserSettingsFlowExecutor.ts
 msgid "Open settings"
+msgstr ""
+
+#: src/flow/stages/authenticator_validate/AuthenticatorValidateStageCode.ts
+msgid "Open your two-factor authenticator app to view your authentication code."
 msgstr ""
 
 #: src/admin/providers/oauth2/OAuth2ProviderViewPage.ts
@@ -4803,8 +4810,11 @@ msgstr "Historial del plan"
 msgid "Please enter the code you received via SMS"
 msgstr ""
 
-#: src/flow/providers/oauth2/DeviceCode.ts
 #: src/flow/stages/authenticator_validate/AuthenticatorValidateStageCode.ts
+msgid "Please enter your code"
+msgstr ""
+
+#: src/flow/providers/oauth2/DeviceCode.ts
 msgid "Please enter your Code"
 msgstr "Por favor, introduzca su código"
 
@@ -7136,8 +7146,8 @@ msgstr ""
 msgid "Unknown proxy mode"
 msgstr ""
 
-#: src/admin/events/RuleListPage.ts
-#: src/admin/events/RuleListPage.ts
+#: src/admin/events/utils.ts
+#: src/admin/events/utils.ts
 msgid "Unknown severity"
 msgstr ""
 
@@ -7732,6 +7742,7 @@ msgid "Verification"
 msgstr "Verificación"
 
 #: src/admin/providers/saml/SAMLProviderForm.ts
+#: src/admin/sources/saml/SAMLSourceForm.ts
 msgid "Verification Certificate"
 msgstr "Certificado de verificación"
 
@@ -7790,7 +7801,7 @@ msgstr ""
 #: src/admin/admin-overview/cards/SystemStatusCard.ts
 #: src/admin/admin-overview/cards/SystemStatusCard.ts
 #: src/admin/blueprints/BlueprintListPage.ts
-#: src/admin/events/RuleListPage.ts
+#: src/admin/events/utils.ts
 #: src/admin/system-tasks/SystemTaskListPage.ts
 msgid "Warning"
 msgstr "Aviso"
@@ -7815,6 +7826,10 @@ msgstr "Advertencia: ninguna etapa de invitación está vinculada a ningún fluj
 msgid "Warning: Policy is not assigned."
 msgstr "Advertencia: la política no está asignada."
 
+#: src/admin/providers/scim/SCIMProviderViewPage.ts
+msgid "Warning: Provider is not assigned to an application as backchannel provider."
+msgstr ""
+
 #: src/admin/providers/oauth2/OAuth2ProviderViewPage.ts
 #: src/admin/providers/proxy/ProxyProviderViewPage.ts
 #: src/admin/providers/saml/SAMLProviderViewPage.ts
@@ -7823,6 +7838,7 @@ msgstr "Advertencia: Una aplicación no utiliza el proveedor."
 
 #: src/admin/providers/ldap/LDAPProviderViewPage.ts
 #: src/admin/providers/proxy/ProxyProviderViewPage.ts
+#: src/admin/providers/radius/RadiusProviderViewPage.ts
 msgid "Warning: Provider is not used by any Outpost."
 msgstr "Advertencia: ningún puesto avanzado utiliza el proveedor."
 
@@ -7952,6 +7968,7 @@ msgid "When selected, a password field is shown on the same page instead of a se
 msgstr "Cuando se selecciona, se muestra un campo de contraseña en la misma página en lugar de en una página separada. Esto evita ataques de enumeración de nombres de usuario."
 
 #: src/admin/providers/saml/SAMLProviderForm.ts
+#: src/admin/sources/saml/SAMLSourceForm.ts
 msgid "When selected, incoming assertion's Signatures will be validated against this certificate. To allow unsigned Requests, leave on default."
 msgstr "Cuando se selecciona, las firmas de la aserción entrante se validarán con este certificado. Para permitir solicitudes sin firmar, déjelo en el valor predeterminado."
 

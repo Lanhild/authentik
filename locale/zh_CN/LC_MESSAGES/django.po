@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-10 17:31+0000\n"
+"POT-Creation-Date: 2023-05-19 22:00+0000\n"
 "PO-Revision-Date: 2022-09-26 16:47+0000\n"
 "Last-Translator: deluxghost, 2023\n"
 "Language-Team: Chinese (China) (https://app.transifex.com/authentik/teams/119923/zh_CN/)\n"
@@ -1312,49 +1312,49 @@ msgid ""
 "hours=1;minutes=2;seconds=3)."
 msgstr "从当前时间经过多久时或之后，会话无效（格式：hours=1;minutes=2;seconds=3）。"
 
-#: authentik/providers/saml/models.py:99 authentik/sources/saml/models.py:139
+#: authentik/providers/saml/models.py:99 authentik/sources/saml/models.py:150
 msgid "SHA1"
 msgstr "SHA1"
 
-#: authentik/providers/saml/models.py:100 authentik/sources/saml/models.py:140
+#: authentik/providers/saml/models.py:100 authentik/sources/saml/models.py:151
 msgid "SHA256"
 msgstr "SHA256"
 
-#: authentik/providers/saml/models.py:101 authentik/sources/saml/models.py:141
+#: authentik/providers/saml/models.py:101 authentik/sources/saml/models.py:152
 msgid "SHA384"
 msgstr "SHA384"
 
-#: authentik/providers/saml/models.py:102 authentik/sources/saml/models.py:142
+#: authentik/providers/saml/models.py:102 authentik/sources/saml/models.py:153
 msgid "SHA512"
 msgstr "SHA512"
 
-#: authentik/providers/saml/models.py:109 authentik/sources/saml/models.py:149
+#: authentik/providers/saml/models.py:109 authentik/sources/saml/models.py:160
 msgid "RSA-SHA1"
 msgstr "RSA-SHA1"
 
-#: authentik/providers/saml/models.py:110 authentik/sources/saml/models.py:150
+#: authentik/providers/saml/models.py:110 authentik/sources/saml/models.py:161
 msgid "RSA-SHA256"
 msgstr "RSA-SHA256"
 
-#: authentik/providers/saml/models.py:111 authentik/sources/saml/models.py:151
+#: authentik/providers/saml/models.py:111 authentik/sources/saml/models.py:162
 msgid "RSA-SHA384"
 msgstr "RSA-SHA384"
 
-#: authentik/providers/saml/models.py:112 authentik/sources/saml/models.py:152
+#: authentik/providers/saml/models.py:112 authentik/sources/saml/models.py:163
 msgid "RSA-SHA512"
 msgstr "RSA-SHA512"
 
-#: authentik/providers/saml/models.py:113 authentik/sources/saml/models.py:153
+#: authentik/providers/saml/models.py:113 authentik/sources/saml/models.py:164
 msgid "DSA-SHA1"
 msgstr "DSA-SHA1"
 
-#: authentik/providers/saml/models.py:124
+#: authentik/providers/saml/models.py:124 authentik/sources/saml/models.py:130
 msgid ""
 "When selected, incoming assertion's Signatures will be validated against "
 "this certificate. To allow unsigned Requests, leave on default."
 msgstr "选中后，传入断言的签名将根据此证书进行验证。要允许未签名的请求，请保留默认值。"
 
-#: authentik/providers/saml/models.py:128
+#: authentik/providers/saml/models.py:128 authentik/sources/saml/models.py:134
 msgid "Verification Certificate"
 msgstr "验证证书"
 
@@ -1362,7 +1362,7 @@ msgstr "验证证书"
 msgid "Keypair used to sign outgoing Responses going to the Service Provider."
 msgstr "密钥对，用于签署发送给服务提供程序的传出响应。"
 
-#: authentik/providers/saml/models.py:138 authentik/sources/saml/models.py:129
+#: authentik/providers/saml/models.py:138 authentik/sources/saml/models.py:144
 msgid "Signing Keypair"
 msgstr "签名密钥对"
 
@@ -1410,34 +1410,34 @@ msgstr "SCIM 映射"
 msgid "SCIM Mappings"
 msgstr "SCIM 映射"
 
-#: authentik/providers/scim/tasks.py:50
+#: authentik/providers/scim/tasks.py:52
 msgid "Starting full SCIM sync"
 msgstr "开始全量 SCIM 同步"
 
-#: authentik/providers/scim/tasks.py:57
+#: authentik/providers/scim/tasks.py:59
 #, python-format
 msgid "Syncing page %(page)d of users"
 msgstr "正在同步用户页面 %(page)d"
 
-#: authentik/providers/scim/tasks.py:61
+#: authentik/providers/scim/tasks.py:63
 #, python-format
 msgid "Syncing page %(page)d of groups"
 msgstr "正在同步群组页面 %(page)d"
 
-#: authentik/providers/scim/tasks.py:90
+#: authentik/providers/scim/tasks.py:92
 #, python-format
-msgid "Failed to sync user due to remote error %(name)s: %(error)s"
-msgstr "由于远端错误 %(name)s，同步用户失败：%(error)s"
+msgid "Failed to sync user %(user_name)s due to remote error: %(error)s"
+msgstr "由于远端错误，同步用户 %(user_name)s 失败：%(error)s"
 
-#: authentik/providers/scim/tasks.py:101 authentik/providers/scim/tasks.py:142
+#: authentik/providers/scim/tasks.py:103 authentik/providers/scim/tasks.py:144
 #, python-format
 msgid "Stopping sync due to error: %(error)s"
 msgstr "由于以下错误，同步停止：%(error)s"
 
-#: authentik/providers/scim/tasks.py:131
+#: authentik/providers/scim/tasks.py:133
 #, python-format
-msgid "Failed to sync group due to remote error %(name)s: %(error)s"
-msgstr "由于远端错误 %(name)s，同步群组失败：%(error)s"
+msgid "Failed to sync group %(group_name)s due to remote error: %(error)s"
+msgstr "由于远端错误，同步组 %(group_name)s 失败：%(error)s"
 
 #: authentik/recovery/management/commands/create_admin_group.py:11
 msgid "Create admin group if the default group gets deleted."
@@ -1527,7 +1527,7 @@ msgstr "LDAP 属性映射"
 msgid "LDAP Property Mappings"
 msgstr "LDAP 属性映射"
 
-#: authentik/sources/ldap/signals.py:56
+#: authentik/sources/ldap/signals.py:59
 msgid "Password does not match Active Directory Complexity."
 msgstr "密码与 Active Directory 复杂度不匹配。"
 
@@ -1797,25 +1797,24 @@ msgstr ""
 "删除临时用户的时间偏移。这仅适用于您的 IDP 使用 NameID 格式 'transient' "
 "且用户未手动登出的情况。（格式：hours=1;minutes=2;seconds=3）。"
 
-#: authentik/sources/saml/models.py:131
+#: authentik/sources/saml/models.py:142
 msgid ""
-"Keypair which is used to sign outgoing requests. Leave empty to disable "
-"signing."
-msgstr "用于签署传出请求的密钥对。留空则禁用签名。"
+"Keypair used to sign outgoing Responses going to the Identity Provider."
+msgstr "密钥对，用于签署发送给身份提供程序的传出响应。"
 
-#: authentik/sources/saml/models.py:215
+#: authentik/sources/saml/models.py:226
 msgid "SAML Source"
 msgstr "SAML 源"
 
-#: authentik/sources/saml/models.py:216
+#: authentik/sources/saml/models.py:227
 msgid "SAML Sources"
 msgstr "SAML 源"
 
-#: authentik/sources/saml/models.py:231
+#: authentik/sources/saml/models.py:242
 msgid "User SAML Source Connection"
 msgstr "用户 SAML 源连接"
 
-#: authentik/sources/saml/models.py:232
+#: authentik/sources/saml/models.py:243
 msgid "User SAML Source Connections"
 msgstr "用户 SAML 源连接"
 
@@ -2150,6 +2149,10 @@ msgstr ""
 "                    这是一封测试电子邮件，用于通知您已成功配置 authentik 电子邮件。\n"
 "                    "
 
+#: authentik/stages/identification/api.py:20
+msgid "When no user fields are selected, at least one source must be selected"
+msgstr "如果未选择用户字段，则至少要选择一个源"
+
 #: authentik/stages/identification/models.py:29
 msgid ""
 "Fields of the user object to match against. (Hold shift to select multiple "
@@ -2443,17 +2446,18 @@ msgstr "用户写入阶段"
 msgid "User Write Stages"
 msgstr "用户写入阶段"
 
-#: authentik/stages/user_write/stage.py:132
+#: authentik/stages/user_write/stage.py:133
 msgid "No Pending data."
 msgstr "没有待处理的数据。"
 
-#: authentik/stages/user_write/stage.py:138
+#: authentik/stages/user_write/stage.py:139
 msgid "No user found and can't create new user."
 msgstr "未找到用户并且无法创建新用户。"
 
-#: authentik/stages/user_write/stage.py:165
-msgid "Failed to save user"
-msgstr "保存用户失败"
+#: authentik/stages/user_write/stage.py:156
+#: authentik/stages/user_write/stage.py:170
+msgid "Failed to update user. Please try again later."
+msgstr "更新用户失败。请稍后重试。"
 
 #: authentik/tenants/models.py:23
 msgid ""

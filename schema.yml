@@ -10922,6 +10922,7 @@ paths:
         name: action
         schema:
           type: string
+          nullable: true
           enum:
           - authorize_application
           - configuration_error
@@ -29100,6 +29101,7 @@ components:
         action:
           allOf:
           - $ref: '#/components/schemas/EventActions'
+          nullable: true
           description: |-
             Match created events with this action type. When left empty, all action types will be matched.
 
@@ -29132,11 +29134,13 @@ components:
             * `custom_` - Custom Prefix
         client_ip:
           type: string
+          nullable: true
           description: Matches Event's Client IP (strict matching, for network matching
             use an Expression Policy)
         app:
           allOf:
           - $ref: '#/components/schemas/AppEnum'
+          nullable: true
           description: |-
             Match events created by selected application. When left empty, all applications are matched.
 
@@ -29191,6 +29195,7 @@ components:
         model:
           allOf:
           - $ref: '#/components/schemas/ModelEnum'
+          nullable: true
           description: |-
             Match events created by selected model. When left empty, all models are matched. When an app is selected, all the application's models are matched.
 
@@ -29286,6 +29291,7 @@ components:
         action:
           allOf:
           - $ref: '#/components/schemas/EventActions'
+          nullable: true
           description: |-
             Match created events with this action type. When left empty, all action types will be matched.
 
@@ -29318,11 +29324,14 @@ components:
             * `custom_` - Custom Prefix
         client_ip:
           type: string
+          nullable: true
+          minLength: 1
           description: Matches Event's Client IP (strict matching, for network matching
             use an Expression Policy)
         app:
           allOf:
           - $ref: '#/components/schemas/AppEnum'
+          nullable: true
           description: |-
             Match events created by selected application. When left empty, all applications are matched.
 
@@ -29377,6 +29386,7 @@ components:
         model:
           allOf:
           - $ref: '#/components/schemas/ModelEnum'
+          nullable: true
           description: |-
             Match events created by selected model. When left empty, all models are matched. When an app is selected, all the application's models are matched.
 
@@ -30796,7 +30806,7 @@ components:
           type: integer
           maximum: 2147483647
           minimum: -2147483648
-          description: The start for uidNumbers, this number is added to the user.Pk
+          description: The start for uidNumbers, this number is added to the user.pk
             to make sure that the numbers aren't too low for POSIX users. Default
             is 2000 to ensure that we don't collide with local users uidNumber
         gid_start_number:
@@ -30804,13 +30814,20 @@ components:
           maximum: 2147483647
           minimum: -2147483648
           description: The start for gidNumbers, this number is added to a number
-            generated from the group.Pk to make sure that the numbers aren't too low
+            generated from the group.pk to make sure that the numbers aren't too low
             for POSIX groups. Default is 4000 to ensure that we don't collide with
             local groups or users primary groups gidNumber
         search_mode:
           $ref: '#/components/schemas/LDAPAPIAccessMode'
         bind_mode:
           $ref: '#/components/schemas/LDAPAPIAccessMode'
+        mfa_support:
+          type: boolean
+          description: When enabled, code-based multi-factor authentication can be
+            used by appending a semicolon and the TOTP code to the password. This
+            should only be enabled if all users that will bind to this provider have
+            a TOTP device configured, as otherwise a password may incorrectly be rejected
+            if it contains a semicolon.
       required:
       - application_slug
       - bind_flow_slug
@@ -30966,7 +30983,7 @@ components:
           type: integer
           maximum: 2147483647
           minimum: -2147483648
-          description: The start for uidNumbers, this number is added to the user.Pk
+          description: The start for uidNumbers, this number is added to the user.pk
             to make sure that the numbers aren't too low for POSIX users. Default
             is 2000 to ensure that we don't collide with local users uidNumber
         gid_start_number:
@@ -30974,7 +30991,7 @@ components:
           maximum: 2147483647
           minimum: -2147483648
           description: The start for gidNumbers, this number is added to a number
-            generated from the group.Pk to make sure that the numbers aren't too low
+            generated from the group.pk to make sure that the numbers aren't too low
             for POSIX groups. Default is 4000 to ensure that we don't collide with
             local groups or users primary groups gidNumber
         outpost_set:
@@ -30986,6 +31003,13 @@ components:
           $ref: '#/components/schemas/LDAPAPIAccessMode'
         bind_mode:
           $ref: '#/components/schemas/LDAPAPIAccessMode'
+        mfa_support:
+          type: boolean
+          description: When enabled, code-based multi-factor authentication can be
+            used by appending a semicolon and the TOTP code to the password. This
+            should only be enabled if all users that will bind to this provider have
+            a TOTP device configured, as otherwise a password may incorrectly be rejected
+            if it contains a semicolon.
       required:
       - assigned_application_name
       - assigned_application_slug
@@ -31041,7 +31065,7 @@ components:
           type: integer
           maximum: 2147483647
           minimum: -2147483648
-          description: The start for uidNumbers, this number is added to the user.Pk
+          description: The start for uidNumbers, this number is added to the user.pk
             to make sure that the numbers aren't too low for POSIX users. Default
             is 2000 to ensure that we don't collide with local users uidNumber
         gid_start_number:
@@ -31049,13 +31073,20 @@ components:
           maximum: 2147483647
           minimum: -2147483648
           description: The start for gidNumbers, this number is added to a number
-            generated from the group.Pk to make sure that the numbers aren't too low
+            generated from the group.pk to make sure that the numbers aren't too low
             for POSIX groups. Default is 4000 to ensure that we don't collide with
             local groups or users primary groups gidNumber
         search_mode:
           $ref: '#/components/schemas/LDAPAPIAccessMode'
         bind_mode:
           $ref: '#/components/schemas/LDAPAPIAccessMode'
+        mfa_support:
+          type: boolean
+          description: When enabled, code-based multi-factor authentication can be
+            used by appending a semicolon and the TOTP code to the password. This
+            should only be enabled if all users that will bind to this provider have
+            a TOTP device configured, as otherwise a password may incorrectly be rejected
+            if it contains a semicolon.
       required:
       - authorization_flow
       - name
@@ -36229,6 +36260,7 @@ components:
         action:
           allOf:
           - $ref: '#/components/schemas/EventActions'
+          nullable: true
           description: |-
             Match created events with this action type. When left empty, all action types will be matched.
 
@@ -36261,11 +36293,14 @@ components:
             * `custom_` - Custom Prefix
         client_ip:
           type: string
+          nullable: true
+          minLength: 1
           description: Matches Event's Client IP (strict matching, for network matching
             use an Expression Policy)
         app:
           allOf:
           - $ref: '#/components/schemas/AppEnum'
+          nullable: true
           description: |-
             Match events created by selected application. When left empty, all applications are matched.
 
@@ -36320,6 +36355,7 @@ components:
         model:
           allOf:
           - $ref: '#/components/schemas/ModelEnum'
+          nullable: true
           description: |-
             Match events created by selected model. When left empty, all models are matched. When an app is selected, all the application's models are matched.
 
@@ -36721,7 +36757,7 @@ components:
           type: integer
           maximum: 2147483647
           minimum: -2147483648
-          description: The start for uidNumbers, this number is added to the user.Pk
+          description: The start for uidNumbers, this number is added to the user.pk
             to make sure that the numbers aren't too low for POSIX users. Default
             is 2000 to ensure that we don't collide with local users uidNumber
         gid_start_number:
@@ -36729,13 +36765,20 @@ components:
           maximum: 2147483647
           minimum: -2147483648
           description: The start for gidNumbers, this number is added to a number
-            generated from the group.Pk to make sure that the numbers aren't too low
+            generated from the group.pk to make sure that the numbers aren't too low
             for POSIX groups. Default is 4000 to ensure that we don't collide with
             local groups or users primary groups gidNumber
         search_mode:
           $ref: '#/components/schemas/LDAPAPIAccessMode'
         bind_mode:
           $ref: '#/components/schemas/LDAPAPIAccessMode'
+        mfa_support:
+          type: boolean
+          description: When enabled, code-based multi-factor authentication can be
+            used by appending a semicolon and the TOTP code to the password. This
+            should only be enabled if all users that will bind to this provider have
+            a TOTP device configured, as otherwise a password may incorrectly be rejected
+            if it contains a semicolon.
     PatchedLDAPSourceRequest:
       type: object
       description: LDAP Source Serializer

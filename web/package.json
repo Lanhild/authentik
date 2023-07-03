@@ -36,8 +36,8 @@
         "@goauthentik/api": "^2023.5.4-1687900474",
         "@lit/localize": "^0.11.4",
         "@patternfly/patternfly": "^4.224.2",
-        "@sentry/browser": "^7.56.0",
-        "@sentry/tracing": "^7.56.0",
+        "@sentry/browser": "^7.57.0",
+        "@sentry/tracing": "^7.57.0",
         "@webcomponents/webcomponentsjs": "^2.8.0",
         "base64-js": "^1.5.1",
         "chart.js": "^4.3.0",
@@ -48,7 +48,7 @@
         "country-flag-icons": "^1.5.7",
         "fuse.js": "^6.6.2",
         "lit": "^2.7.5",
-        "mermaid": "^10.2.3",
+        "mermaid": "^10.2.4",
         "rapidoc": "^9.3.4",
         "style-mod": "^4.0.3",
         "webcomponent-qr-code": "^1.1.1",
@@ -70,7 +70,7 @@
         "@rollup/plugin-commonjs": "^25.0.2",
         "@rollup/plugin-node-resolve": "^15.0.2",
         "@rollup/plugin-replace": "^5.0.2",
-        "@rollup/plugin-typescript": "^11.1.1",
+        "@rollup/plugin-typescript": "^11.1.2",
         "@storybook/addon-essentials": "^7.0.24",
         "@storybook/addon-links": "^7.0.24",
         "@storybook/blocks": "^7.0.22",
@@ -106,7 +106,7 @@
         "ts-lit-plugin": "^1.2.1",
         "tslib": "^2.6.0",
         "turnstile-types": "^1.1.2",
-        "typescript": "^5.1.5",
+        "typescript": "^5.1.6",
         "vite-tsconfig-paths": "^4.2.0"
     }
 }

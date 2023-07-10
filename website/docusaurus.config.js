@@ -53,13 +53,13 @@ module.exports = async function () {
                         type: "dropdown",
                         label: `Version: ${releases[0].replace(
                             /releases\/\d+\/v/,
-                            ""
+                            "",
                         )}`,
                         position: "right",
                         items: releases.map((release) => {
                             const version = release.replace(
                                 /releases\/\d+\/v/,
-                                ""
+                                "",
                             );
                             const subdomain = version.replace(".", "-");
                             const label = `Version: ${version}`;
@@ -82,6 +82,13 @@ module.exports = async function () {
                         position: "right",
                     },
                 ],
+            },
+            announcementBar: {
+                id: "hackathon",
+                content: `We're hosting a hackathon with a total prize pool of $5000 in July! Sign up <a href="https://goauthentik.io/developer-docs/hackathon/">here</a>!`,
+                backgroundColor: "#ffffff",
+                textColor: "#000000",
+                isCloseable: false,
             },
             footer: {
                 links: [
@@ -164,7 +171,7 @@ module.exports = async function () {
                                     // Only replace issues and PR links
                                     buildUrl: function (
                                         values,
-                                        defaultBuildUrl
+                                        defaultBuildUrl,
                                     ) {
                                         return values.type === "issue"
                                             ? defaultBuildUrl(values)
